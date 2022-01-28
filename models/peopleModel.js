@@ -2,7 +2,7 @@
 
 module.exports = (sequelize,DataTypes) =>{
 
-    const Product = sequelize.define("members",{
+    const People = sequelize.define("people",{
         firstName:{
             type:DataTypes.STRING,
             allowNull:false
@@ -13,7 +13,6 @@ module.exports = (sequelize,DataTypes) =>{
         },
         others:{
             type:DataTypes.STRING,
-            
         },
         gender:{
             type:DataTypes.STRING,
@@ -64,9 +63,6 @@ module.exports = (sequelize,DataTypes) =>{
         yearofJoining:{
             type:DataTypes.STRING,
         },
-        memberType:{
-            type:DataTypes.INTEGER,
-        },
         event:{
             type:DataTypes.STRING,
         },
@@ -76,10 +72,16 @@ module.exports = (sequelize,DataTypes) =>{
         className:{
             type:DataTypes.STRING,
         },
+        memberType:{
+            type:DataTypes.INTEGER,
+        },
         status:{
+            type:DataTypes.STRING,
+        },
+        image:{
             type:DataTypes.STRING,
         },
     })
 
-    return Product
+    return People
 }

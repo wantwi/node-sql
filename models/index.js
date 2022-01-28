@@ -33,7 +33,7 @@ const db = {}
 db.Sequelize = Sequelize
 db.sequelize = sequelize
 
-db.products = require('./memberModel.js')(sequelize,DataTypes)
+db.products = require('./peopleModel.js')(sequelize,DataTypes)
 // db.members = require('./memberModel.js')(sequelize,DataTypes)
 db.commitee = require('./commiteeModel.js')(sequelize,DataTypes)
 
