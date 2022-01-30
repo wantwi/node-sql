@@ -1,30 +1,40 @@
-const express = require('express')
-const cors = require('cors')
+const express = require("express");
+const cors = require("cors");
+const user = require("./routes/authRouter.js");
+const people = require("./routes/peopleRouter");
 
-const app = express()
+const app = express();
 
-let corsOption ={
-    origin:'https://localhost:8081'
-}
+let corsOption = {
+  origin: "https://localhost:8081",
+};
 
+app.use(cors(corsOption));
+app.use(express.json());
 
+app.use(express.urlencoded({ extended: true }));
 
-app.use(cors(corsOption))
-app.use(express.json())
+app.use("/api", user);
+app.use("/api", people);
+app.use("/uploads", express.static("uploads"));
 
-app.use(express.urlencoded({extended:true}))
+app.get("/", (req, res) => {
+  res.json({ message: "Hello api!!" });
+});
 
-const router = require("./routes/productRouter.js")
+const PORT = process.env.PORT || 8080;
 
-app.use("/api",router)
+const server = app.listen(PORT, () => {
+  console.log(`Server runing on ${PORT} mode`);
+});
+// app.listen(PORT, () => {
+//   console.log(`server running on port: ${PORT}`);
+// });
 
-app.get("/", (req,res)=>{
-    res.json({message:"Hello api!!"})
-})
-
-
-const PORT = process.env.PORT || 8080
-
-app.listen(PORT,()=>{
-    console.log(`server running on port: ${PORT}`);
-})
+process.on("unhandledRejection", (err) => {
+  console.log(`Error: ${err.message}`);
+  console.log("Server shutting down due to unhandle promise rejection");
+  server.close(() => {
+    process.exit(1);
+  });
+});
