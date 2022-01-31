@@ -36,6 +36,8 @@ db.people = require("./peopleModel.js")(sequelize, DataTypes);
 db.user = require("./userModel.js")(sequelize, DataTypes);
 db.account = require("./accountModel.js", DataTypes);
 db.commitee = require("./commiteeModel.js")(sequelize, DataTypes);
+db.committeeMember =  require("./committeeMemberModel")(sequelize, DataTypes);
+db.contributionType =  require("./contributionTypeModel")(sequelize, DataTypes);
 
 db.sequelize
   .sync({ force: false })

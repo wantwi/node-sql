@@ -4,11 +4,12 @@ module.exports = (sequelize, DataTypes) => {
     userId: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
-      primaryKey: true,
+      unique: true,
     },
     username: {
       type: DataTypes.STRING,
       allowNull: false,
+      primaryKey: true,
     },
     password: {
       type: DataTypes.STRING,
@@ -20,9 +21,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
     },
-    status: {
-      type: DataTypes.INTEGER,
-    },
+    status:{
+      type:DataTypes.INTEGER,
+      defaultValue:1
+  },
   });
 
   return User;

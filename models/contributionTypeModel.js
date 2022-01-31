@@ -1,6 +1,6 @@
 module.exports = (sequelize,DataTypes) =>{
 
-    const Committee = sequelize.define("committee",{
+    const ContributionType = sequelize.define("contribution_type",{
         id: {
             type: DataTypes.UUID,
             defaultValue: DataTypes.UUIDV4,
@@ -24,5 +24,5 @@ module.exports = (sequelize,DataTypes) =>{
       
     })
 
-    return Committee
+    return ContributionType
 }

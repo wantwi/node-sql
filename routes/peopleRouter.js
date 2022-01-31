@@ -3,16 +3,20 @@ const peopleController = require("../controllers/peopleController.js");
 const { userAuthentication } = require("../middleware/auth.js");
 const upload = require("../utils/upload");
 
+
 router.get(
-  "/getAdultMembers",
+  "/persons/:memberType",
   userAuthentication,
-  peopleController.getAdultMembers
+  peopleController.getPersonByQuery
 );
-//router.get('/getJuniorMember',productController.getProducts)
+
 router.post(
-  "/addAdultMember",
+  "/person/:memberType",
   userAuthentication,
-  upload.single("image"),
-  peopleController.addAdultMember
+  upload.single('image'),
+  peopleController.addPerson
 );
+
+
+
 module.exports = router;

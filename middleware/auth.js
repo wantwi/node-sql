@@ -29,17 +29,16 @@ exports.userAuthentication = async (req, res, next) => {
   //     attributes: ["userId", "accountId", "username", "role"],
   //   });
 
-  req.user = await User.findOne({ where: { userId: decoded.userId } });
+  req.user = await User.findOne({ where: { userId: decoded.userId },attributes:[`userId`, `username`,  `role`, `accountId`, `status`] });
 
   next();
 };
 
 //handling users roles
 
-exports.userAuthorizeRoles = (...roles) => {
+exports.userAuthorizeRoles = (roles) => {
   return (req, res, next) => {
-    console.log(roles);
-
+   
     if (!roles.includes(req.user.role)) {
       return next(res.status(403).send("Access Denied"));
     }

@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
   const People = sequelize.define("people", {
-    memberId: {
+    id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
@@ -76,9 +76,10 @@ module.exports = (sequelize, DataTypes) => {
     memberType: {
       type: DataTypes.INTEGER,
     },
-    status: {
-      type: DataTypes.STRING,
-    },
+    status:{
+      type:DataTypes.INTEGER,
+      defaultValue:1
+  },
     image: {
       type: DataTypes.STRING,
     },

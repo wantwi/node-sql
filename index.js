@@ -2,6 +2,10 @@ const express = require("express");
 const cors = require("cors");
 const user = require("./routes/authRouter.js");
 const people = require("./routes/peopleRouter");
+const committee = require("./routes/committeeRouter")
+const contribution = require("./routes/contributionRouter")
+var bodyParser = require('body-parser')
+require("env-cmd")
 
 const app = express();
 
@@ -11,18 +15,22 @@ let corsOption = {
 
 app.use(cors(corsOption));
 app.use(express.json());
+app.use(bodyParser.json())
 
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/api", user);
 app.use("/api", people);
+app.use("/api",committee);
+app.use("/api",contribution);
 app.use("/uploads", express.static("uploads"));
 
 app.get("/", (req, res) => {
   res.json({ message: "Hello api!!" });
 });
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.DEV_PORT || 8080;
+
 
 const server = app.listen(PORT, () => {
   console.log(`Server runing on ${PORT} mode`);

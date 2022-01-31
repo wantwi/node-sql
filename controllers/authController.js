@@ -22,7 +22,11 @@ const registerUser = async (req, res) => {
       userInfo.password = encryptPassword.toString();
       const user = await User.create(userInfo);
 
-      sendToken(user, 200, res);
+        if(user){
+          sendToken(user, 200, res);
+        }
+
+     
     }
 
     //res.status(200).send(user);

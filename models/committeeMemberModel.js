@@ -8,6 +8,17 @@ module.exports = (sequelize,DataTypes) =>{
         memberId:{
             type:DataTypes.UUID
         },
+        status:{
+            type:DataTypes.INTEGER,
+            defaultValue:1
+        },
+        accountId: {
+            type: DataTypes.UUID,
+        },
+
+        currentUserId: {
+        type: DataTypes.UUID,
+        },
       
     })
 
