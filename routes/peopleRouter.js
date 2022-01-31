@@ -1,8 +1,10 @@
 const router = require("express").Router();
 const peopleController = require("../controllers/peopleController.js");
-const { userAuthentication } = require("../middleware/auth.js");
+const {
+  userAuthentication,
+  userAuthorizeRoles,
+} = require("../middleware/auth.js");
 const upload = require("../utils/upload");
-
 
 router.get(
   "/persons/:memberType",
@@ -13,10 +15,15 @@ router.get(
 router.post(
   "/person/:memberType",
   userAuthentication,
-  upload.single('image'),
+  upload.single("image"),
   peopleController.addPerson
 );
 
-
+router.delete(
+  "/person/:id",
+  userAuthentication,
+  userAuthorizeRoles("admin"),
+  peopleController.removePerson
+);
 
 module.exports = router;
