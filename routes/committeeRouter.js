@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const { userAuthentication, userAuthorizeRoles } = require("../middleware/auth.js");
 const commiteeController = require("../controllers/committeeController")
+const committeeMemberController = require("../controllers/committeeMemberController")
 
 
 router.post(
@@ -22,6 +23,20 @@ router.get(
     userAuthentication,
     
     commiteeController.getCommittee
+  );
+
+
+  router.post(
+    "/committee/members",
+    userAuthentication,
+    userAuthorizeRoles(['admin']),
+    committeeMemberController.addCommitteeMembers
+  );
+  
+  router.get(
+    "/committee/members/:id",
+    userAuthentication,
+    committeeMemberController.getCommitteeMembers
   );
   
   

@@ -9,7 +9,7 @@ const CommitteeMember = db.committeeMember;
     try {
        req.body.forEach(data =>{
 
-        data.userId = userId;
+        data.currentUserId = userId;
         data.accountId = accountId
        })
       const committeeMember = await CommitteeMember.bulkCreate(req.body);
