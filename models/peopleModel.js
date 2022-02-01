@@ -34,7 +34,7 @@ module.exports = (sequelize, DataTypes) => {
     gpsLocation: {
       type: DataTypes.STRING,
     },
-    marritalStatu: {
+    marritalStatus: {
       type: DataTypes.STRING,
     },
     address: {

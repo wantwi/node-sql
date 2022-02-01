@@ -12,6 +12,12 @@ router.get(
   peopleController.getPersonByQuery
 );
 
+router.get(
+  "/person/:memberType/:id",
+  userAuthentication,
+  peopleController.getPersonById
+);
+
 router.post(
   "/person/:memberType",
   userAuthentication,

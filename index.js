@@ -10,7 +10,7 @@ require("env-cmd");
 const app = express();
 
 let corsOption = {
-  origin: "https://localhost:8081",
+  origin: "*",
 };
 
 app.use(cors(corsOption));

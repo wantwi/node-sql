@@ -56,6 +56,20 @@ const addPerson = async (req, res) => {
   }
 };
 
+const getPersonById =async(req, res)=>{
+  try {
+    const { accountId } = req.user;
+  const { memberType,id } = req.params;
+  const person = await  People.findOne({ where: { id,accountId }, attributes: Attributes[memberType], });
+  res.status(200).send(person);
+
+  } catch (error) {
+    console.log(error)
+  }
+  
+
+}
+
 const removePerson = async (req, res) => {
   const { userId, accountId } = req.user;
 
@@ -75,4 +89,5 @@ module.exports = {
   addPerson,
   getPersonByQuery,
   removePerson,
+  getPersonById
 };

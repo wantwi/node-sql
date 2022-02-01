@@ -1,7 +1,7 @@
 
 exports.Attributes = {
     0 :  [`id`, `firstName`, `lastName`, `others`, `gender`, `birthDate`,
-    `phoneNumber`, `email`, `gpsLocation`, `marritalStatu`, `address`, `occupation`,
+    `phoneNumber`, `email`, `gpsLocation`, `marritalStatus`, `address`, `occupation`,
      `membershipStatus`, `classLeader`, `role`, `organisation`, `emergencyContact`, 
      `emergencyName`, `yearofJoining`,`status`, `image`],
 
