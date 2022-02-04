@@ -1,3 +1,4 @@
+const CommitteeMember = require('./committeeMemberModel')
 module.exports = (sequelize,DataTypes) =>{
 
     const Committee = sequelize.define("committee",{
@@ -23,6 +24,11 @@ module.exports = (sequelize,DataTypes) =>{
           },
       
     })
+
+  
+    CommitteeMember
+
+   
 
     return Committee
 }

@@ -2,7 +2,7 @@ const config = require("../config/config.js");
 
 const { Sequelize, DataTypes } = require("sequelize");
 
-const sequelize = new Sequelize(
+ const sequelize = new Sequelize(
   config.DB_NAME,
   config.USERNAME,
   config.PASSWORD,
@@ -39,8 +39,10 @@ db.commitee = require("./commiteeModel.js")(sequelize, DataTypes);
 db.committeeMember = require("./committeeMemberModel")(sequelize, DataTypes);
 db.contributionType = require("./contributionTypeModel")(sequelize, DataTypes);
 
+
+
 db.sequelize
-  .sync({ force: false })
+  .sync({ alter: false })
   .then(() => {
     console.log("Sync completed");
   })

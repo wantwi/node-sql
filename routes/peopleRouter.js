@@ -25,6 +25,12 @@ router.post(
   peopleController.addPerson
 );
 
+router.put(
+  "/person/:id",
+  userAuthentication,
+  peopleController.updatePerson
+);
+
 router.delete(
   "/person/:id",
   userAuthentication,

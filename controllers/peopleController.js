@@ -1,5 +1,6 @@
 const db = require("../models/index.js");
 const Attributes = require("../utils/attributes").Attributes;
+const fs = require('fs')
 
 //create main model
 const People = db.people;
@@ -56,6 +57,26 @@ const addPerson = async (req, res) => {
   }
 };
 
+const updatePerson = async (req, res) => {
+  const { userId, accountId } = req.user;
+  const {id} = req.params;
+
+  req.body.currentUserId = userId;
+  req.body.accountId = accountId;
+
+
+  try {
+    let person = await People.findOne({ where: { id,accountId } });
+
+     person.set(req.body)
+     let updatePerson =  await person.save();
+    res.status(200).send(updatePerson);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+};
+
+
 const getPersonById =async(req, res)=>{
   try {
     const { accountId } = req.user;
@@ -78,9 +99,17 @@ const removePerson = async (req, res) => {
   const { id } = req.params;
 
   try {
-    const person = await People.destory({ where: { id } });
-    res.status(200).send(person);
+    // const removeperson = await  People.findOne({ where: { id,accountId }});
+    // if(removeperson){
+    //   fs.unlinkSync(removeperson)
+    // }
+
+    const person = await People.destroy({ where: { id } });
+
+  
+    res.status(200).send("done");
   } catch (error) {
+    console.log({error});
     res.status(500).send(error);
   }
 };
@@ -89,5 +118,6 @@ module.exports = {
   addPerson,
   getPersonByQuery,
   removePerson,
-  getPersonById
+  getPersonById,
+  updatePerson
 };

@@ -22,22 +22,11 @@ const addCommittee = async (req, res) => {
   const getCommittees = async (req, res) => {
    
     try {
-        const query = req.query
-        const memberType =  req.params.memberType
-        let queryKey = Object.keys(query)[0];
-        let queryVal = Object.values(query)[0];
+       
         const {accountId} = req.user;
-        let committee;
-  
-        if(!queryKey){
-            committee = await Committee.findAll({ where: {accountId}});
-        }
-        else{
-            committee = await People.findAll({  
-                where: {[`${queryKey}`]:queryVal,accountId},
-               
-            });
-        }
+        let committee = await Committee.findAll({ where: {accountId}});
+        
+       
       res.status(200).send(committee);
       
     } catch (error) {

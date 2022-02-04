@@ -27,14 +27,14 @@ router.get(
 
 
   router.post(
-    "/committee/members",
+    "/committee/:id/members",
     userAuthentication,
     userAuthorizeRoles(['admin']),
     committeeMemberController.addCommitteeMembers
   );
   
   router.get(
-    "/committee/members/:id",
+    "/committee/:id/members",
     userAuthentication,
     committeeMemberController.getCommitteeMembers
   );
