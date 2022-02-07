@@ -38,6 +38,18 @@ router.get(
     userAuthentication,
     committeeMemberController.getCommitteeMembers
   );
+
+  router.delete(
+    "/committee/:id/:memberId",
+    userAuthentication,
+    committeeMemberController.removeCommitteeMember
+  );
+
+  router.get(
+    "/committee/:id/nonmembers",
+    userAuthentication,
+    committeeMemberController.getNonCommitteeMembers
+  );
   
   
   

@@ -4,6 +4,7 @@ const user = require("./routes/authRouter.js");
 const people = require("./routes/peopleRouter");
 const committee = require("./routes/committeeRouter");
 const contribution = require("./routes/contributionRouter");
+const operation = require("./routes/operationRouter");
 
 require("env-cmd");
 
@@ -22,6 +23,7 @@ app.use("/api", user);
 app.use("/api", people);
 app.use("/api", committee);
 app.use("/api", contribution);
+app.use("/api",operation)
 app.use("/uploads", express.static("uploads"));
 
 app.get("/", (req, res) => {

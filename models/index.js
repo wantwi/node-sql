@@ -38,6 +38,7 @@ db.account = require("./accountModel.js", DataTypes);
 db.commitee = require("./commiteeModel.js")(sequelize, DataTypes);
 db.committeeMember = require("./committeeMemberModel")(sequelize, DataTypes);
 db.contributionType = require("./contributionTypeModel")(sequelize, DataTypes);
+db.operationtype = require("./operationTypeModel")(sequelize, DataTypes);
 
 
 
