@@ -27,7 +27,39 @@ const addOperationType = async (req, res) => {
     }
   };
 
+  const updateOperationType = async (req, res) => {
+    const {accountId} = req.user
+    const {id} = req.params
+  
+    try {
+     
+      const operationtype = await OperationType.update(req.body,{where:{id,accountId}});
+      res.status(200).send(operationtype);
+    } catch (error) {
+      res.status(500).send(error);
+    }
+  };
+
+  const deleteOperationType = async (req, res) => {
+    const {accountId} = req.user
+    const {id} = req.params
+
+
+    console.log({id})
+  //return
+    try {
+     
+      const operationtype = await OperationType.destroy({where:{id,accountId}});
+      console.log({operationtype})
+      res.status(200).send(operationtype.toString());
+    } catch (error) {
+      res.status(500).send(error);
+    }
+  };
+
   module.exports = {
     addOperationType,
-    getOperationTypes
+    getOperationTypes,
+    updateOperationType,
+    deleteOperationType
 };
