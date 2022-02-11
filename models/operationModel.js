@@ -1,4 +1,4 @@
-
+const OptionType =  require("./operationTypeModel")
 module.exports = (sequelize,DataTypes) =>{
 
     const Operation = sequelize.define("operation",{
@@ -43,6 +43,17 @@ module.exports = (sequelize,DataTypes) =>{
           },
       
     })
+
+//     const optionType =  OptionType(sequelize,DataTypes)
+//    // console.log({optionType})
+
+//     //optionType.hasMany(Operation,)
+   
+//     optionType.hasMany(Operation,{foreignKey:{
+//         name:"operationId"
+//     }})
+//     // Operation.belongsTo(optionType,{foreignKey:{
+//     //  name:"id"}})
    
 
     return Operation
