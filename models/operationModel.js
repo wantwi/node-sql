@@ -9,7 +9,7 @@ module.exports = (sequelize,DataTypes) =>{
           },
         operationId: {
             type: DataTypes.UUID,
-            primaryKey: true,
+           primaryKey: true, 
         },
         month: {
             type: DataTypes.STRING,
