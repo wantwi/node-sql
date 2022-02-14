@@ -45,5 +45,16 @@ const operation = require("../controllers/operationController")
     operation.getOperations
   );
 
+  router.put(
+    "/operation/:id",
+    userAuthentication,
+    operation.updateOperation
+  );
+
+  router.delete(
+    "/operation/:id",
+    userAuthentication,
+    operation.deleteOperation
+  );
 
 module.exports = router;

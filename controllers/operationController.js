@@ -33,32 +33,12 @@ const addOperation = async (req, res) => {
 
      
 
-      const [results, metadata] = await db.sequelize.query("SELECT ops.id,ops.operationId, week1,week2,week3,week4, SUM(`week1`+`week2`+`week3`+`week4`+`week5`) AS `total`,optypes.name FROM `operations` AS `ops` INNER JOIN operationtypes As optypes ON ops.operationId = optypes.id WHERE `ops`.`month` = ? AND `ops`.`year` = ? AND `ops`.`accountId` =?",
+      const [results, metadata] = await db.sequelize.query("SELECT ops.id,ops.operationId, `week1`, `week2`, `week3`, `week4`, `week5`, `week1`+`week2`+`week3`+`week4`+`week5` AS `total`,optypes.name FROM `operations` AS `ops` INNER JOIN operationtypes As optypes ON ops.operationId = optypes.id WHERE `ops`.`month` = ? AND `ops`.`year` = ? AND `ops`.`accountId` =?",
       {
         replacements:[month,year,accountId]
       }
       )
      
-  //     const operationType = await OperationType.findAll({where:{accountId}});
-      
-  //     const operation = await Operation.findAll({
-  //       where:{month,year,accountId},
-  //     },
-      
-  //       );
-  //     if(operation && operationType ){
-  //       let newop ={}
-  //       let result = []
-      
-  // operation.forEach(x =>
-  //        {
-  //         newop =  {name : operationType.find(y =>y.id ===  x.operationId).name,...x.dataValues}
-  //         result.push(newop)
-  //     } )
-
-   
-     
-      //}
 
       res.status(200).send(results);
      
@@ -100,6 +80,6 @@ const addOperation = async (req, res) => {
   module.exports = {
     addOperation,
     getOperations,
-    //updateOperation,
-   // deleteOperation
+    updateOperation,
+    deleteOperation
 };

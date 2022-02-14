@@ -21,18 +21,23 @@ module.exports = (sequelize,DataTypes) =>{
         },
         week1:{
             type:DataTypes.INTEGER,
+            defaultValue:0
         },
         week2:{
             type:DataTypes.INTEGER,
+            defaultValue:0
         },
         week3:{
             type:DataTypes.INTEGER,
+            defaultValue:0
         },
         week4:{
             type:DataTypes.INTEGER,
+            defaultValue:0
         },
         week5:{
             type:DataTypes.INTEGER,
+            defaultValue:0
             },
       
         accountId: {
