@@ -52,7 +52,7 @@ const operation = require("../controllers/operationController")
   );
 
   router.delete(
-    "/operation/:id",
+    "/operation/:id", 
     userAuthentication,
     operation.deleteOperation
   );

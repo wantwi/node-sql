@@ -40,7 +40,7 @@ db.committeeMember = require("./committeeMemberModel")(sequelize, DataTypes);
 db.contributionType = require("./contributionTypeModel")(sequelize, DataTypes);
 db.operationtype = require("./operationTypeModel")(sequelize, DataTypes);
 db.operation = require("./operationModel")(sequelize, DataTypes);
-
+db.adultClass = require("./adultClassModel")(sequelize, DataTypes);
 
 db.sequelize
   .sync({ alter: false })

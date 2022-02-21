@@ -5,6 +5,7 @@ const people = require("./routes/peopleRouter");
 const committee = require("./routes/committeeRouter");
 const contribution = require("./routes/contributionRouter");
 const operation = require("./routes/operationRouter");
+const adultclass = require("./routes/adultClassRouter")
 
 require("env-cmd");
 
@@ -24,6 +25,7 @@ app.use("/api", people);
 app.use("/api", committee);
 app.use("/api", contribution);
 app.use("/api",operation)
+app.use("/api",adultclass)
 app.use("/uploads", express.static("uploads"));
 
 app.get("/", (req, res) => {
@@ -39,10 +41,12 @@ const server = app.listen(PORT, () => {
 //   console.log(`server running on port: ${PORT}`);
 // });
 
-process.on("unhandledRejection", (err) => {
+process.on("unhandledRejection", (req, res,err) => {
+ 
   console.log(`Error: ${err.message}`);
-  console.log("Server shutting down due to unhandle promise rejection");
-  server.close(() => {
-    process.exit(1);
-  });
+ // res.json({mess: err.message}) ;
+  // console.log("Server shutting down due to unhandle promise rejection");
+  // server.close(() => {
+  //   process.exit(1);
+  // });
 });
