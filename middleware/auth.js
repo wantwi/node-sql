@@ -20,7 +20,7 @@ exports.userAuthentication = async (req, res, next) => {
 
   //   const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-  const decoded = jwt.verify(token, "pass@123");
+  const decoded = jwt.verify(token,process.env.JWT_SECRET);
 
   //   req.user = await User.findOne({
   //     where: {

@@ -26,7 +26,7 @@ const sendToken = (user, statusCode, res) => {
 
 const getJwtToken = (user) => {
   const { userId, username, role, accountId } = user;
-  return jwt.sign({ userId, username, role, accountId }, "pass@123", {
+  return jwt.sign({ userId, username, role, accountId }, process.env.JWT_SECRET, {
     expiresIn: "7d",
   });
 };

@@ -6,6 +6,7 @@ const committee = require("./routes/committeeRouter");
 const contribution = require("./routes/contributionRouter");
 const operation = require("./routes/operationRouter");
 const adultclass = require("./routes/adultClassRouter")
+require('dotenv').config();
 
 require("env-cmd");
 
@@ -43,10 +44,13 @@ const server = app.listen(PORT, () => {
 
 process.on("unhandledRejection", (req, res,err) => {
  
-  console.log(`Error: ${err.message}`);
+  console.log(`Error: ${req}`);
  // res.json({mess: err.message}) ;
   // console.log("Server shutting down due to unhandle promise rejection");
   // server.close(() => {
   //   process.exit(1);
   // });
 });
+
+
+console.log(process.env.JWT_SECRET)
