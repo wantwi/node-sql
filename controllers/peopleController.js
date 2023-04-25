@@ -40,18 +40,18 @@ const getPersonByQuery = async (req, res) => {
 };
 
 const addPerson = async (req, res) => {
-  const { userId, accountId } = req.user;
+  // const { userId, accountId } = req.user;
 
-  req.body.currentUserId = userId;
-  req.body.accountId = accountId;
+  // req.body.currentUserId = userId;
+  // req.body.accountId = accountId;
   req.body.memberType = req.params.memberType;
   if (req.file) {
     req.body.image = req.file.path ? req.file.path : "";
   }
 
   try {
-    const adultmembers = await People.create(req.body);
-    res.status(200).send(adultmembers);
+    //const adultmembers = await People.create(req.body);
+    res.status(200).send(req.body);
   } catch (error) {
     res.status(500).send(error);
   }

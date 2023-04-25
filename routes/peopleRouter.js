@@ -20,7 +20,7 @@ router.get(
 
 router.post(
   "/person/:memberType",
-  userAuthentication,
+  // userAuthentication,
   upload.single("image"),
   peopleController.addPerson
 );
